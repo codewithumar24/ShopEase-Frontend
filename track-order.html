@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase · Track Your Order</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Poppins', sans-serif; }
+        
+        /* Background Shapes */
+        .shape-top { clip-path: polygon(0 0, 100% 0, 100% 30%, 0 60%); background: linear-gradient(135deg, #ff0000 0%, #ff8c00 100%); position: fixed; top: 0; left: 0; width: 100%; height: 50vh; z-index: -1; }
+        .shape-bottom { clip-path: polygon(0 70%, 100% 40%, 100% 100%, 0 100%); background: linear-gradient(135deg, #00ff88 0%, #0077ff 100%); position: fixed; bottom: 0; left: 0; width: 100%; height: 50vh; z-index: -1; }
+
+        /* Moving Border Animation */
+        .animated-border-wrapper {
+            position: relative;
+            padding: 3px;
+            border-radius: 28px;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .animated-border-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #00ff88, #ff0000, #0077ff);
+            animation: rotateLine 4s linear infinite;
+            top: -50%; left: -50%;
+        }
+        @keyframes rotateLine { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        .inner-card { background: white; border-radius: 25px; position: relative; z-index: 20; }
+
+        /* Step Connector */
+        .step-line { position: absolute; left: 19px; top: 30px; bottom: 0; width: 2px; background: #e2e8f0; }
+        .step-line-active { background: #10b981; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade { animation: fadeIn 0.5s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+    <div class="shape-top"></div>
+    <div class="shape-bottom"></div>
+
+    <nav class="bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <i class="fa-solid fa-cube text-2xl text-indigo-600"></i>
+                <span class="font-bold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">ShopEase</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="login.html" class="text-slate-600 hover:text-indigo-600 text-sm font-medium">Log in</a>
+                <a href="register.html" class="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto py-12 px-4">
+        <div class="text-center mb-10">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white drop-shadow-md mb-2">Where's my order?</h1>
+            <p class="text-white/80 font-medium">Real-time tracking at your fingertips</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <div class="lg:col-span-5">
+                <div class="animated-border-wrapper shadow-2xl">
+                    <div class="inner-card p-8">
+                        <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass-location text-indigo-500"></i>
+                            Track Shipment
+                        </h2>
+                        
+                        <form id="trackingForm" class="space-y-5">
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Order Number</label>
+                                <div class="relative">
+                                    <i class="fa-solid fa-hashtag absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="text" id="orderNumber" placeholder="e.g. SHOP-4832" 
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">Email Address</label>
+                                <div class="relative">
+                                    <i class="fa-regular fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <input type="email" id="orderEmail" placeholder="you@example.com" 
+                                        class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] transition transform">
+                                Track My Package
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-white/60 backdrop-blur-sm rounded-[25px] p-6 border border-white/30 text-center">
+                    <p class="text-sm text-slate-600 italic">"Excellent service! My order arrived exactly on time."</p>
+                    <div class="mt-2 text-indigo-600 font-bold text-xs">— Sarah K.</div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7">
+                <div id="welcomeMessage" class="bg-white/40 backdrop-blur-md rounded-[30px] p-12 border border-white/20 text-center animate-fade">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
+                        <i class="fa-solid fa-box-open text-3xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-700">Ready to track?</h3>
+                    <p class="text-slate-500 text-sm mt-2">Enter your details to see the journey of your ShopEase package.</p>
+                </div>
+
+                <div id="trackingResult" class="hidden space-y-6 animate-fade">
+                    <div class="bg-white rounded-[30px] shadow-xl overflow-hidden">
+                        <div class="bg-indigo-600 px-8 py-6 text-white flex justify-between items-center">
+                            <div>
+                                <p class="text-xs opacity-70 uppercase font-bold tracking-widest">Status: In Transit</p>
+                                <h3 class="text-2xl font-bold" id="displayOrderNumber">#SHOP-4832</h3>
+                            </div>
+                            <i class="fa-solid fa-truck-fast text-4xl opacity-50"></i>
+                        </div>
+                        
+                        <div class="p-8">
+                            <div class="space-y-8 relative">
+                                <div class="step-line"></div>
+                                
+                                <div class="flex gap-6 relative">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white z-10 shadow-lg">
+                                        <i class="fa-solid fa-check text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800">Order Placed</h4>
+                                        <p class="text-xs text-slate-400">Feb 28, 10:24 AM</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-6 relative">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center text-white z-10 shadow-lg">
+                                        <i class="fa-solid fa-check text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800">Shipped</h4>
+                                        <p class="text-xs text-slate-400">Mar 02, 02:15 PM · Hub: Texas, US</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-6 relative">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white z-10 shadow-lg animate-pulse">
+                                        <i class="fa-solid fa-location-dot text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800">In Transit</h4>
+                                        <p class="text-xs text-indigo-500 font-bold">Today, 08:40 AM · Los Angeles, CA</p>
+                                        <p class="text-sm text-slate-600 mt-1">Arrived at regional distribution center.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-6 relative opacity-40">
+                                    <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-slate-400 z-10">
+                                        <i class="fa-solid fa-house-chimney text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-slate-800">Delivered</h4>
+                                        <p class="text-xs text-slate-400">Estimated: Mar 12</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/80 backdrop-blur-sm rounded-[25px] p-6 border border-white flex items-center gap-4 shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop" class="w-16 h-16 rounded-xl object-cover">
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm">Premium Wireless Headphones</h4>
+                            <p class="text-xs text-slate-500">Carrier: FastExpress · ID: FX-99210</p>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="bg-slate-100 p-3 rounded-full hover:bg-indigo-100 text-indigo-600 transition">
+                                <i class="fa-solid fa-bell"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto py-8 text-center text-white/60 text-xs">
+        © 2026 ShopEase Marketplace · Fast & Secure Delivery
+    </footer>
+
+    <script>
+        const form = document.getElementById('trackingForm');
+        const welcome = document.getElementById('welcomeMessage');
+        const result = document.getElementById('trackingResult');
+        const orderInput = document.getElementById('orderNumber');
+        const displayOrder = document.getElementById('displayOrderNumber');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch animate-spin"></i> Searching...';
+            
+            setTimeout(() => {
+                welcome.classList.add('hidden');
+                result.classList.remove('hidden');
+                displayOrder.innerText = orderInput.value.toUpperCase() || '#SHOP-4832';
+                btn.innerText = originalText;
+                
+                result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 800);
+        });
+    </script>
+</body>
+</html>

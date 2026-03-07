@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEase · help & policies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @keyframes float {
+            0%,100%{ transform: translateY(0px); }
+            50%{ transform: translateY(-10px); }
+        }
+        @keyframes gentlePulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        .animate-pulse-soft { animation: gentlePulse 3s infinite; }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 12px; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .faq-item {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        .faq-item:hover {
+            border-left-color: #6366f1;
+            background-color: #f8fafc;
+        }
+        
+        .toc-link.active {
+            color: #4f46e5;
+            font-weight: 500;
+            border-left: 3px solid #4f46e5;
+            padding-left: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 antialiased min-h-screen flex flex-col">
+
+<nav class="bg-white/80 backdrop-blur-sm sticky top-0 z-30 border-b border-slate-200/60">
+    <div class="max-w-7xl mx-auto px-4 md:px-6">
+        <div class="flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <i class="fa-solid fa-cube text-2xl text-indigo-600 group-hover:scale-110 transition"></i>
+                <span class="font-bold text-xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">ShopEase</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <a href="login.html" class="text-slate-600 hover:text-indigo-600 font-medium px-3 py-2 text-sm">Log in</a>
+                <a href="register.html" class="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition shadow-md hover:shadow-lg">Sign up</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-gradient-to-r from-indigo-600 to-purple-600 py-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <i class="fa-solid fa-circle-question absolute text-8xl top-5 left-10 animate-float"></i>
+        <i class="fa-solid fa-file-lines absolute text-7xl bottom-5 right-20 animate-float" style="animation-delay: 1s"></i>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 text-center text-white relative z-10">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2" id="pageTitle">Frequently Asked Questions</h1>
+        <p class="text-lg max-w-2xl mx-auto opacity-90" id="pageSubtitle">Find answers & understand our policies</p>
+    </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16">
+    <div class="flex justify-center gap-4 mb-10">
+        <a href="#faqs" id="tabFaqs" class="tab-link px-6 py-2.5 rounded-full text-sm font-medium transition-all bg-indigo-600 text-white shadow-md">FAQs</a>
+        <a href="#terms" id="tabTerms" class="tab-link px-6 py-2.5 rounded-full text-sm font-medium transition-all bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Terms & Privacy</a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-3 relative">
+            <div class="sticky top-24 space-y-5">
+                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <h4 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3"><i class="fa-regular fa-compass mr-2"></i> on this page</h4>
+                    <ul id="tocList" class="space-y-2 text-sm">
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-100 p-5">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i class="fa-regular fa-headset text-xl text-indigo-600"></i>
+                        <span class="font-semibold text-slate-700">Need more help?</span>
+                    </div>
+                    <p class="text-xs text-slate-600 mb-3">Our support team is ready 24/7</p>
+                    <a href="contact.html" class="block w-full bg-indigo-600 text-white text-center py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition">Contact us</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-9">
+            <div id="faqSection" class="content-section block">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-regular fa-circle-question text-indigo-500"></i> Frequently asked questions</h2>
+                    
+                    <div class="space-y-4" id="faqContainer">
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq1">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">What payment methods do you accept?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                We accept Visa, MasterCard, American Express, PayPal, Apple Pay, Google Pay, and ShopPay. All payments are encrypted and secure.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq2">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">How long does shipping take?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                Standard shipping takes 3-5 business days (free over $50). Express shipping (2-3 days) is $9.99. International shipping varies by destination.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq3">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">What is your return policy?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                We offer 30-day returns for unworn/unused items in original packaging. Start a return from your account or contact support.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq4">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">How do I track my order?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                Use our <a href="order-tracking.html" class="text-indigo-600 font-medium hover:underline">order tracking page</a> with your order number and email. You'll also receive tracking links via email.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq5">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">Can I change or cancel my order?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                Orders can be modified within 1 hour of placement. Contact support immediately if you need changes – we'll do our best!
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item border border-slate-200 rounded-xl overflow-hidden" id="faq6">
+                            <button class="faq-question w-full flex justify-between items-center p-5 text-left bg-white hover:bg-slate-50 transition">
+                                <span class="font-medium text-slate-800">Do you ship internationally?</span>
+                                <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                            </button>
+                            <div class="faq-answer hidden px-5 pb-5 text-slate-600 text-sm border-t pt-4">
+                                Yes, we ship to over 50 countries. Shipping costs and delivery times vary by location – calculated at checkout.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-slate-50 rounded-xl p-5 text-center">
+                        <p class="text-slate-600">Still looking for answers?</p>
+                        <a href="contact.html" class="inline-block mt-2 text-indigo-600 font-medium hover:underline">Contact our support team →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="termsSection" class="content-section hidden">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-regular fa-file-lines text-indigo-500"></i> Terms & Privacy</h2>
+                    <p class="text-sm text-slate-400 mb-6">Last updated: March 1, 2025</p>
+                    
+                    <div class="space-y-8" id="termsContainer">
+                        <div id="terms1" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">1. Introduction</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Welcome to ShopEase. By accessing or using our service, you agree to be bound by these Terms. If you do not agree, please do not use our website.</p>
+                        </div>
+                        
+                        <div id="terms2" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">2. Account responsibilities</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">You are responsible for maintaining your account credentials and for all activities under your account. Notify us immediately of any unauthorized use.</p>
+                        </div>
+                        
+                        <div id="terms3" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">3. Orders and payments</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">All prices are in USD and include applicable taxes. We reserve the right to cancel any order due to pricing errors or suspected fraud.</p>
+                        </div>
+                        
+                        <div id="terms4" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">4. Shipping & delivery</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">Delivery times are estimates. Risk of loss passes to you upon delivery. We are not liable for delays caused by carriers or customs.</p>
+                        </div>
+                        
+                        <div id="privacy1" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">5. Privacy – data collection</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">We collect personal information (name, email, address) to process orders and improve your experience. We never sell your data.</p>
+                        </div>
+                        
+                        <div id="privacy2" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">6. Cookies & tracking</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">We use cookies to remember your cart and preferences. You can disable cookies in browser settings, but some features may not work.</p>
+                        </div>
+                        
+                        <div id="privacy3" class="scroll-mt-24">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-2">7. Your rights</h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">You may request access, correction, or deletion of your personal data. Contact us at privacy@shopease.com.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-indigo-50 rounded-xl p-5 text-sm text-slate-700">
+                        <i class="fa-regular fa-scale-balanced mr-2 text-indigo-600"></i> 
+                        For any legal questions, please contact legal@shopease.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4">© 2025 ShopEase · all rights reserved · <a href="#" class="hover:text-indigo-600">privacy</a> · <a href="#" class="hover:text-indigo-600">terms</a></div>
+</footer>
+
+<script>
+    (function() {
+        const tabFaqs = document.getElementById('tabFaqs');
+        const tabTerms = document.getElementById('tabTerms');
+        const faqSection = document.getElementById('faqSection');
+        const termsSection = document.getElementById('termsSection');
+        const pageTitle = document.getElementById('pageTitle');
+        const pageSubtitle = document.getElementById('pageSubtitle');
+        const tocList = document.getElementById('tocList');
+        
+        function initAccordion() {
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.removeEventListener('click', accordionHandler);
+                btn.addEventListener('click', accordionHandler);
+            });
+        }
+        
+        function accordionHandler(e) {
+            const btn = e.currentTarget;
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector('.fa-chevron-down');
+            
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        function updateToc(section) {
+            if (section === 'faq') {
+                pageTitle.innerText = 'Frequently Asked Questions';
+                pageSubtitle.innerText = 'Quick answers to common questions';
+                tocList.innerHTML = `
+                    <li><a href="#faq1" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">📦 Payments & shipping</a></li>
+                    <li><a href="#faq2" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">⏱️ Delivery times</a></li>
+                    <li><a href="#faq3" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">↩️ Returns</a></li>
+                    <li><a href="#faq4" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">🔍 Tracking</a></li>
+                    <li><a href="#faq5" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">✏️ Order changes</a></li>
+                    <li><a href="#faq6" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">🌍 International</a></li>
+                `;
+            } else {
+                pageTitle.innerText = 'Terms & Privacy';
+                pageSubtitle.innerText = 'Our policies and data practices';
+                tocList.innerHTML = `
+                    <li><a href="#terms1" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">1. Introduction</a></li>
+                    <li><a href="#terms2" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">2. Account</a></li>
+                    <li><a href="#terms3" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">3. Payments</a></li>
+                    <li><a href="#terms4" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">4. Shipping</a></li>
+                    <li><a href="#privacy1" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">5. Data collection</a></li>
+                    <li><a href="#privacy2" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">6. Cookies</a></li>
+                    <li><a href="#privacy3" class="toc-link block py-1 text-slate-600 hover:text-indigo-600 transition">7. Your rights</a></li>
+                `;
+            }
+            
+            document.querySelectorAll('.toc-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+        
+        tabFaqs.addEventListener('click', (e) => {
+            e.preventDefault();
+            faqSection.classList.remove('hidden');
+            termsSection.classList.add('hidden');
+            tabFaqs.classList.add('bg-indigo-600', 'text-white');
+            tabFaqs.classList.remove('bg-white', 'text-slate-700', 'border');
+            tabTerms.classList.remove('bg-indigo-600', 'text-white');
+            tabTerms.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            updateToc('faq');
+        });
+        
+        tabTerms.addEventListener('click', (e) => {
+            e.preventDefault();
+            faqSection.classList.add('hidden');
+            termsSection.classList.remove('hidden');
+            tabTerms.classList.add('bg-indigo-600', 'text-white');
+            tabTerms.classList.remove('bg-white', 'text-slate-700', 'border');
+            tabFaqs.classList.remove('bg-indigo-600', 'text-white');
+            tabFaqs.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            updateToc('terms');
+        });
+        
+        updateToc('faq');
+        initAccordion();
+        
+        
+        window.addEventListener('scroll', () => {
+        });
+        
+        if (window.location.hash === '#terms' || window.location.href.includes('terms')) {
+            tabTerms.click();
+        } else if (window.location.hash === '#faqs') {
+            tabFaqs.click();
+        }
+    })();
+</script>
+</body>
+</html>
